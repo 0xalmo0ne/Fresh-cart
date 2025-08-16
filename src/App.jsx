@@ -1,5 +1,5 @@
 /** @format */
-import { createBrowserRouter, createHashRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from 'react-router-dom'
 import "./App.css";
 import Layout from "./components/Layout/Layout";
 import ProductDetails from "./components/ProductDetails/ProductDetails.jsx";
