@@ -52,5 +52,5 @@ export default function MainSlider() {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

@@ -20,13 +20,33 @@ export default function CatSlider() {
 		dots: false,
 		infinite: true,
 		speed: 1510,
-		cssEase: "linear",
+		cssEase: 'linear',
 		slidesToShow: 7,
 		slidesToScroll: 1,
 		arrows: false,
 		autoplay: true,
 		autoplaySpeed: 0,
-	};
+		responsive: [
+			{
+				breakpoint: 1024,
+				settings: {
+					slidesToShow: 5,
+				},
+			},
+			{
+				breakpoint: 768,
+				settings: {
+					slidesToShow: 3,
+				},
+			},
+			{
+				breakpoint: 480,
+				settings: {
+					slidesToShow: 2,
+				},
+			},
+		],
+	}
 
 	return (
 		<>
@@ -36,11 +56,11 @@ export default function CatSlider() {
 					{Categories?.map((cate) => (
 						<>
 							<img src={cate.image} className='h-[220px] w-[220px]' alt='' />
-							<p className='text-center text-xl'>{cate.name}</p>
+							<p className='text-center text-xl hidden sm:block'>{cate.name}</p>
 						</>
 					))}
 				</Slider>
 			</div>
 		</>
-	);
+	)
 }
