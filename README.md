@@ -56,11 +56,3 @@ npm install
 npm run dev
 ```
 
-Your app will be running on `http://localhost:5173/` 🎉
-
-
-etc.)*
-
-## 📌 License
-
-This project is licensed under the MIT License.
