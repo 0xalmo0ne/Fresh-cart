@@ -1,0 +1,82 @@
+.img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 0.8rem !important;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+
+svg {
+  width: 20px;
+  height: 20px;
+}
+
+.img:hover {
+  transform: scale(1.09);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2),
+    0 8px 10px rgba(255, 145, 77, 0.25);
+}
+
+.CartBtn {
+  width: 100%;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  background-color: rgb(36, 219, 48);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: .5s;
+  overflow: hidden;
+  /* box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.103); */
+  position: relative;
+}
+
+.IconContainer {
+  position: absolute;
+  left: -50px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+  transition-duration: .4s;
+}
+
+.icon {
+  border-radius: 1px;
+}
+
+.text {
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(17, 17, 17);
+  z-index: 1;
+  transition-duration: .5s;
+  font-size: 1.2em;
+}
+
+.CartBtn:hover .IconContainer {
+  transform: translateX(58px);
+  border-radius: 40px;
+  transition-duration: .4s;
+}
+
+.CartBtn:hover .text {
+  transform: translate(10px, 0px);
+  transition-duration: .4s;
+}
+
+.CartBtn:active {
+  transform: scale(0.95);
+  transition-duration: .5s;
+}

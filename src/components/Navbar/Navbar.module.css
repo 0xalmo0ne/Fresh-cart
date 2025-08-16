@@ -1,0 +1,76 @@
+.Btn {
+ display: flex;
+ align-items: center;
+ justify-content: flex-start;
+ width: 45px;
+ height: 45px;
+ border: none;
+ border-radius: 50%;
+ cursor: pointer;
+ position: relative;
+ overflow: hidden;
+ transition-duration: 0.3s;
+ box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+ background-color: white;
+}
+
+.sign {
+ width: 100%;
+ transition-duration: 0.3s;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.sign svg {
+ width: 17px;
+}
+
+.sign svg path {
+ fill: rgb(47, 211, 11);
+}
+
+
+.text {
+ position: absolute;
+ right: 0%;
+ width: 0%;
+ opacity: 0;
+ color: white;
+ font-size: 1.2em;
+ font-weight: 600;
+ transition-duration: 0.3s;
+}
+
+.text:hover {
+ color: white;
+}
+
+.Btn:hover {
+ background-color: rgb(44, 178, 21);
+ width: 130px;
+ border-radius: 40px;
+ transition-duration: 0.3s;
+}
+
+.Btn:hover .sign {
+ width: 36%;
+ transition-duration: 0.3s;
+ padding-left: 17px;
+}
+
+.Btn:hover .sign svg path {
+ fill: white;
+}
+
+.Btn:hover .text {
+ opacity: 1;
+ width: 60%;
+ transition-duration: 0.3s;
+ padding-right: 10px;
+}
+
+
+.Btn:active {
+ transform: translate(2px, 2px);
+}
