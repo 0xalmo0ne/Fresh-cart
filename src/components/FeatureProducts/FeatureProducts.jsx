@@ -6,8 +6,10 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { CartContext } from '../../Context/CartContext.jsx'
+import { tokenContext } from '../../Context/TokenContext.jsx'
 export default function FeatureProducts() {
 	const [page, setPage] = useState(1)
+	let { token } = useContext(tokenContext)
 	const { addToCart } = useContext(CartContext)
 	async function addProudactCart(productId) {
 		await addToCart(productId)
@@ -79,23 +81,25 @@ export default function FeatureProducts() {
 									</p>
 								</div>
 							</Link>
-							<div className='text-center mt-2.5'>
-								<button
-									onClick={() => addProudactCart(products._id)}
-									className={`${styles.CartBtn} w-full py-6 px-3 text-center`}>
-									<span className={styles.IconContainer}>
-										<svg
-											xmlns='http://www.w3.org/2000/svg'
-											height='1em'
-											viewBox='0 0 576 512'
-											fill='rgb(17, 17, 17)'
-											className='cart'>
-											<path d='M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z'></path>
-										</svg>
-									</span>
-									<span className={styles.text}>Add to Cart</span>
-								</button>
-							</div>
+							{token ? (
+								<div className='text-center mt-2.5'>
+									<button
+										onClick={() => addProudactCart(products._id)}
+										className={`${styles.CartBtn} w-full py-6 px-3 text-center`}>
+										<span className={styles.IconContainer}>
+											<svg
+												xmlns='http://www.w3.org/2000/svg'
+												height='1em'
+												viewBox='0 0 576 512'
+												fill='rgb(17, 17, 17)'
+												className='cart'>
+												<path d='M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z'></path>
+											</svg>
+										</span>
+										<span className={styles.text}>Add to Cart</span>
+									</button>
+								</div>
+							) : null}
 						</div>
 					))}
 				</div>
