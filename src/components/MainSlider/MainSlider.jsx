@@ -35,10 +35,10 @@ export default function MainSlider() {
 	if (isLoading) return <Loader />;
 
 	return (
-		<div className='flex items-center justify-center'>
+		<div className='flex items-center justify-center lg:px-20'>
 			<div className='container mx-auto'>
 				<div className='flex'>
-					<div className='w-3/4 mt-5 lg:px-20'>
+					<div className='w-3/4 mt-5 '>
 						<Slider {...settings}>
 							<img src={slider1} className='h-[400px] rounded-s-lg' alt='' />
 							<img src={slider2} className='h-[400px] rounded-s-lg' alt='' />
