@@ -219,7 +219,20 @@ export default function Navbar() {
 									</li>
 								</div>
 							</>
-						) : null}
+						) : (
+							<>
+								<li className='hidden sm:block'>
+									<NavLink to='/Login' className='text-xl'>
+										Login
+									</NavLink>
+								</li>
+								<li className='hidden sm:block'>
+									<NavLink to='/Register' className='text-xl'>
+										Register
+									</NavLink>
+								</li>
+							</>
+						)}
 					</ul>
 				</div>
 			</div>
