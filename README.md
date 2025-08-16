@@ -1,2 +1,68 @@
-# Fresh-cart
-📌 FreshCart – React E-commerce Application  FreshCart is a modern e-commerce web application built with React, Tailwind CSS, and React Router. It provides users with a simple and smooth shopping experience, including authentication, cart, and wishlist features.
+# FreshCart 🛒
+
+FreshCart is a modern **e-commerce web application** built using
+**React** and **Tailwind CSS**.\
+It allows users to browse products, add them to cart, manage wishlist,
+and proceed with a smooth checkout experience.
+
+## 🚀 Features
+
+-   🔑 User Authentication (Login/Register with validation using
+    Formik + Yup)
+-   🛍️ Product Listing & Categories
+-   ❤️ Wishlist Management
+-   🛒 Shopping Cart with item count
+-   📱 Fully Responsive Design (TailwindCSS + DaisyUI)
+-   🔐 Protected Routes with React Router
+-   🚪 Logout functionality
+
+## 🛠️ Tech Stack
+
+-   **Frontend:** React, React Router, Formik, Yup, TailwindCSS, DaisyUI
+-   **State Management:** React Hooks & Context API
+-   **Icons:** Font Awesome
+
+## 📂 Project Structure
+
+    FreshCart/
+    │── src/
+    │   ├── components/    # Reusable UI components
+    │   ├── pages/         # Pages (Login, Register, Dashboard, etc.)
+    │   ├── context/       # Context API for auth & cart
+    │   ├── styles/        # Tailwind + custom CSS
+    │   └── App.js         # Main App
+    │── public/            # Static assets
+    │── package.json
+    │── README.md
+
+## ⚡ Getting Started
+
+### 1️⃣ Clone the Repository
+
+``` bash
+git clone https://github.com/your-username/freshcart.git
+cd freshcart
+```
+
+### 2️⃣ Install Dependencies
+
+``` bash
+npm install
+```
+
+### 3️⃣ Start the Development Server
+
+``` bash
+npm run dev
+```
+
+Your app will be running on `http://localhost:5173/` 🎉
+
+## 📸 Screenshots
+
+*Add some screenshots of your app here (Login, Register, Dashboard,
+etc.)*
+
+## 📌 License
+
+This project is licensed under the MIT License.
