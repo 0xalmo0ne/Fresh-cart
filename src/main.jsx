@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "./index.css";
 import App from "./App.jsx";
 import { TokenContextProvider } from "./Context/TokenContext.jsx";
-import CartContextprovider from "./Context/cartContext.jsx/";
+import CartContextprovider from './Context/CartContext.jsx'
 
 createRoot(document.getElementById("root")).render(
 	<TokenContextProvider>
