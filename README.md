@@ -58,9 +58,7 @@ npm run dev
 
 Your app will be running on `http://localhost:5173/` 🎉
 
-## 📸 Screenshots
 
-*Add some screenshots of your app here (Login, Register, Dashboard,
 etc.)*
 
 ## 📌 License
