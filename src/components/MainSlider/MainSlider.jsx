@@ -38,7 +38,7 @@ export default function MainSlider() {
 		<div className='flex items-center justify-center'>
 			<div className='container mx-auto'>
 				<div className='flex'>
-					<div className='w-3/4 mt-5'>
+					<div className='w-3/4 mt-5 lg:px-20'>
 						<Slider {...settings}>
 							<img src={slider1} className='h-[400px] rounded-s-lg' alt='' />
 							<img src={slider2} className='h-[400px] rounded-s-lg' alt='' />
