@@ -1,21 +1,19 @@
 /** @format */
-
-import React from "react";
-import "./CatSlider.module.css";
-import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
-import Slider from "react-slick";
+import './CatSlider.module.css'
+import axios from 'axios'
+import { useQuery } from '@tanstack/react-query'
+import Slider from 'react-slick'
 export default function CatSlider() {
 	async function categoryProduct() {
 		return await axios
 			.get(`https://ecommerce.routemisr.com/api/v1/categories`)
-			.then((res) => res.data);
+			.then((res) => res.data)
 	}
 	let { data } = useQuery({
-		queryKey: ["categorie"],
+		queryKey: ['categorie'],
 		queryFn: categoryProduct,
-	});
-	let Categories = data?.data;
+	})
+	let Categories = data?.data
 	const settings = {
 		dots: false,
 		infinite: true,
@@ -50,7 +48,7 @@ export default function CatSlider() {
 
 	return (
 		<>
-			<div className='container mx-auto my-10 '>
+			<div className='container mx-auto my-10 lg:px-20 '>
 				<h1 className='text-2xl text-main mt-9'>Show Popular Category:</h1>
 				<Slider {...settings}>
 					{Categories?.map((cate) => (
