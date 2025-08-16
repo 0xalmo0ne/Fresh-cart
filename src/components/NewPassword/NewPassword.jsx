@@ -5,13 +5,16 @@ import './NewPassword.module.css'
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
 import { CartContext } from '../../Context/CartContext.jsx'
+import { useNavigate } from 'react-router-dom'
 
 export default function NewPassword() {
 	let { updatePassword } = useContext(CartContext)
+	let navigate = useNavigate()
 
 	async function changePassword(email, newPassword) {
 		let res = await updatePassword(email, newPassword)
 		console.log(res)
+navigate('/Login')
 	}
 
 	const mySchema = Yup.object({
