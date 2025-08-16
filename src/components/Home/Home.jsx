@@ -1,10 +1,8 @@
 /** @format */
-
-import React from "react";
-import "./Home.module.css";
-import FeatureProducts from "../FeatureProducts/FeatureProducts";
-import MainSlider from "../MainSlider/MainSlider";
-import CatSlider from "../CatSlider/CatSlider";
+import './Home.module.css'
+import FeatureProducts from '../FeatureProducts/FeatureProducts'
+import MainSlider from '../MainSlider/MainSlider'
+import CatSlider from '../CatSlider/CatSlider'
 export default function Home() {
 	return (
 		<div>
@@ -14,5 +12,5 @@ export default function Home() {
 				<FeatureProducts />
 			</>
 		</div>
-	);
+	)
 }

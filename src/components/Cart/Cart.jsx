@@ -2,10 +2,10 @@
 
 import { useContext, useEffect, useState } from "react";
 import "./Cart.module.css";
-import { CartContext } from "../../Context/cartContext/";
-import Loader from "./../Loader/Loader";
-import style from "./Cart.module.css";
-import empty from "../../assets/embty cart.gif/";
+import { CartContext } from '../../Context/CartContext.jsx'
+import Loader from './../Loader/Loader'
+import style from './Cart.module.css'
+import empty from '../../assets/embty cart.gif'
 import { Link } from "react-router-dom";
 export default function Cart() {
 	let { getCart, removeItem, updateCart, totalprice, deletItem } =

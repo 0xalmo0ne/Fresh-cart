@@ -1,8 +1,6 @@
 /** @format */
-
-import React from "react";
-import "./Products.module.css";
-import FeatureProducts from "../FeatureProducts/FeatureProducts";
+import './Products.module.css'
+import FeatureProducts from '../FeatureProducts/FeatureProducts'
 export default function Products() {
 	return (
 		<div>
@@ -10,5 +8,5 @@ export default function Products() {
 				<FeatureProducts />
 			</>
 		</div>
-	);
+	)
 }

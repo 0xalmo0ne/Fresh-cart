@@ -1,32 +1,31 @@
 /** @format */
 
-import React, { useContext, useEffect } from "react";
-import sty from "./Navbar.module.css";
-import Logo from "./../../assets/freshcart-logo.svg";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import { NavLink } from "react-router-dom";
-import { tokenContext } from "../../Context/TokenContext/";
-import "@fortawesome/fontawesome-free/";
-import { CartContext } from "../../Context/CartContext/";
+import { useContext, useEffect } from 'react'
+import sty from './Navbar.module.css'
+import Logo from './../../assets/freshcart-logo.svg'
+import { useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { tokenContext } from '../../Context/TokenContext'
+import '@fortawesome/fontawesome-free/'
+import { CartContext } from '../../Context/CartContext.jsx'
 export default function Navbar() {
-	let { token, setToken } = useContext(tokenContext);
-	let { onNumberItem, getCart, Wishlist, addToWashlist } =
-		useContext(CartContext);
-	let navigat = useNavigate();
+	let { token, setToken } = useContext(tokenContext)
+	let { onNumberItem, getCart } = useContext(CartContext)
+	let navigat = useNavigate()
 
 	useEffect(() => {
 		async function getAllCart() {
-			await getCart();
+			await getCart()
 		}
-		if (localStorage.getItem("userToken")) {
-			getAllCart();
+		if (localStorage.getItem('userToken')) {
+			getAllCart()
 		}
-	}, [getCart]);
+	}, [getCart])
 
 	function logOut() {
-		localStorage.removeItem("userToken");
-		setToken(null);
-		navigat("/Login");
+		localStorage.removeItem('userToken')
+		setToken(null)
+		navigat('/Login')
 	}
 
 	return (

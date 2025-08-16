@@ -4,7 +4,7 @@ import { useContext } from 'react'
 import './NewPassword.module.css'
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
-import { CartContext } from '../../Context/CartContext'
+import { CartContext } from '../../Context/CartContext.jsx'
 
 export default function NewPassword() {
 	let { updatePassword } = useContext(CartContext)

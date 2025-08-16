@@ -1,37 +1,37 @@
 /** @format */
-import React, { useContext, useEffect, useState } from "react";
-import { CartContext } from "../../Context/CartContext";
+import { useContext, useEffect, useState } from 'react'
+import { CartContext } from '../../Context/CartContext.jsx'
 
 export default function Wishlist() {
-	let { getToList, removeList } = useContext(CartContext);
-	const [lists, setList] = useState([]);
+	let { getToList, removeList } = useContext(CartContext)
+	const [lists, setList] = useState([])
 
 	async function handleRemove(productId) {
-		let respons = await removeList(productId);
-		console.log(respons, "remove from wishlist");
+		let respons = await removeList(productId)
+		console.log(respons, 'remove from wishlist')
 		//*هنا بيحل مشكلة لما بجيبها  بالطريقة العادية من ال API ففكرت كتير ولقيت دى احسن طريقة بحيث ميحصلش مشكلة
 		//! المشكلة كانت لما بمسح الصورة والاسم بيختفو فا لازم اعمل ريفرش عشان تظهر	تانى
 		// setList(respons?.data?.data);
-		setList((shalwy) => shalwy.filter((item) => item._id !== productId));
+		setList((shalwy) => shalwy.filter((item) => item._id !== productId))
 	}
 
 	useEffect(() => {
 		async function getWishlist() {
-			let respons = await getToList();
-			console.log(respons.data.data, "wishlist");
-			setList(respons?.data?.data);
+			let respons = await getToList()
+			console.log(respons.data.data, 'wishlist')
+			setList(respons?.data?.data)
 		}
-		getWishlist();
-	}, [getToList]);
+		getWishlist()
+	}, [getToList])
 
 	useEffect(() => {
 		async function getWishlist() {
-			let respons = await getToList();
-			console.log(respons.data.data, "wishlist");
-			setList(respons?.data?.data);
+			let respons = await getToList()
+			console.log(respons.data.data, 'wishlist')
+			setList(respons?.data?.data)
 		}
-		getWishlist();
-	}, [getToList]);
+		getWishlist()
+	}, [getToList])
 
 	return (
 		<div className='container mx-auto mt-20 px-2 mb-20'>
@@ -84,5 +84,5 @@ export default function Wishlist() {
 				))}
 			</div>
 		</div>
-	);
+	)
 }

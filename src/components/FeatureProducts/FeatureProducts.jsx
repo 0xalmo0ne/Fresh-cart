@@ -5,25 +5,23 @@ import Loader from "../Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
-import { CartContext } from "../../Context/cartContext/";
+import { CartContext } from '../../Context/CartContext.jsx'
 export default function FeatureProducts() {
-	const [page, setPage] = useState(1);
-	const { addToCart } = useContext(CartContext);
+	const [page, setPage] = useState(1)
+	const { addToCart } = useContext(CartContext)
 	async function addProudactCart(productId) {
-		let respons = await addToCart(productId);
-		console.log(respons, "add");
+		await addToCart(productId)
 	}
 	function getProducts() {
 		return axios.get(
 			`https://ecommerce.routemisr.com/api/v1/products?page=${page}`
-		);
+		)
 	}
 	let { data, isLoading, error } = useQuery({
-		queryKey: ["featureProductsData", page],
+		queryKey: ['featureProductsData', page],
 		queryFn: getProducts,
 		keepPreviousData: true,
-	});
-	console.log(data, "featureProductsData");
+	})
 
 	// const [products, setProducts] = useState([]);
 	// const [errorMaseg, setErrorMaseg] = useState(null);
@@ -45,14 +43,14 @@ export default function FeatureProducts() {
 	// 			setLoading(false);
 	// 		});
 	// }
-	let totalPages = data?.data?.metadata?.numberOfPages || 0;
+	let totalPages = data?.data?.metadata?.numberOfPages || 0
 	return (
 		<>
 			<div className='container mx-auto px-9'>
 				{isLoading ? <Loader /> : null}
 				{error ? (
 					<div className='flex items-center justify-center h-screen '>
-						{" "}
+						{' '}
 						<p className='text-center text-8xl line-height-20xl text-main'>
 							{error}
 						</p>
@@ -72,7 +70,7 @@ export default function FeatureProducts() {
 									alt=''`}
 								/>
 								<h3 className='text-main mt-1.5'>{products.category.name}</h3>
-								<p>{products.title.split(" ").slice(0, 2).join(" ")}</p>
+								<p>{products.title.split(' ').slice(0, 2).join(' ')}</p>
 								<div className='flex items-center justify-between'>
 									<p>EG: {products.price}</p>
 									<p>
@@ -113,5 +111,5 @@ export default function FeatureProducts() {
 				))}
 			</div>
 		</>
-	);
+	)
 }

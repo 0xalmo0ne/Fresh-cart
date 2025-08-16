@@ -1,16 +1,14 @@
 /** @format */
-
-import axios from "axios";
-import { createContext, useState } from "react";
-import toast from "react-hot-toast";
-import { data } from "react-router-dom";
-import Swal from "sweetalert2";
-export let CartContext = createContext();
+import axios from 'axios'
+import { createContext, useState } from 'react'
+import toast from 'react-hot-toast'
+import Swal from 'sweetalert2'
+export let CartContext = createContext()
 export default function CartContextprovider({ children }) {
 	const [onNumberItem, setOnNumberItem] = useState(0)
 	const [totalprice, setTotalPrice] = useState()
 	const [cart, setCart] = useState(null)
-	const [setList] = useState(null)
+	const [list, setList] = useState(null)
 	let headers = {
 		token: localStorage.getItem('userToken'),
 	}
@@ -293,33 +291,33 @@ export default function CartContextprovider({ children }) {
 			})
 	}
 
-	let updatePassword=async(email,newPassword)=>{
-		try{
-		const headers = {
-			token: localStorage.getItem('userToken'),
-		}
-		const body = {
-			email: email,
-			newPassword: newPassword,
-		}
-		const { data } = await axios.put(
-			'https://ecommerce.routemisr.com/api/v1/auth/resetPassword',
-			body,
-			{ headers }
-		)
-	console.log('Response:', data)
-		toast.success('Password updated successfully')
- 		return data
- 	} catch(error) {
+	let updatePassword = async (email, newPassword) => {
+		try {
+			const headers = {
+				token: localStorage.getItem('userToken'),
+			}
+			const body = {
+				email: email,
+				newPassword: newPassword,
+			}
+			const { data } = await axios.put(
+				'https://ecommerce.routemisr.com/api/v1/auth/resetPassword',
+				body,
+				{ headers }
+			)
+			console.log(data)
+			toast.success('Password updated successfully')
+			return data
+		} catch (error) {
 			console.error(
-			'Update Password Error:',
+				'Update Password Error:',
 				error.response?.data || error.message
 			)
-		toast.error(error.response?.data?.message || 'Something went wrong')
+			toast.error(error.response?.data?.message || 'Something went wrong')
 			return error
- 	}
-	 }
-	
+		}
+	}
+
 	return (
 		<CartContext.Provider
 			value={{

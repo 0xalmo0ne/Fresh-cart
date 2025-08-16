@@ -1,28 +1,27 @@
 /** @format */
 
-import React, { useContext, useEffect, useState } from "react";
-import "./Categories.module.css";
-import { CartContext } from "../../Context/CartContext";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-
+import { useContext, useEffect, useState } from 'react'
+import './Categories.module.css'
+import { CartContext } from '../../Context/CartContext.jsx'
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 export default function Categories() {
-	const [categories, setCategories] = useState([]);
-	let { getCategories, getSubCategories } = useContext(CartContext);
+	const [categories, setCategories] = useState([])
+	let { getCategories, getSubCategories } = useContext(CartContext)
 
 	async function fetchSubCategories(productId) {
-		let response = await getSubCategories(productId);
-		console.log(response?.data?.data, "subcategories");
+		let response = await getSubCategories(productId)
+		console.log(response?.data?.data, 'subcategories')
 	}
 
 	useEffect(() => {
 		async function fetchCategories() {
-			let response = await getCategories();
-			console.log(response?.data?.data, "categories");
-			setCategories(response?.data?.data);
+			let response = await getCategories()
+			console.log(response?.data?.data, 'categories')
+			setCategories(response?.data?.data)
 		}
-		fetchCategories();
-	}, [getCategories]);
+		fetchCategories()
+	}, [getCategories])
 
 	return (
 		<div className='container mx-auto mt-20 px-2 mb-20'>
@@ -52,5 +51,5 @@ export default function Categories() {
 				))}
 			</div>
 		</div>
-	);
+	)
 }

@@ -6,20 +6,20 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import Slider from "react-slick";
-import { CartContext } from "../../Context/cartContext/";
+import { CartContext } from '../../Context/CartContext.jsx'
 export default function ProudactDetiles() {
-	const { addToCart, addToList } = useContext(CartContext);
+	const { addToCart, addToList } = useContext(CartContext)
 
 	async function addToWish(productId) {
-		let respons = await addToList(productId);
-		console.log(respons, "wishlist");
+		let respons = await addToList(productId)
+		console.log(respons, 'wishlist')
 	}
 
 	async function addProudactCart(productId) {
-		let respons = await addToCart(productId);
-		console.log(respons);
+		let respons = await addToCart(productId)
+		console.log(respons)
 	}
-	let { id, category } = useParams();
+	let { id, category } = useParams()
 
 	async function relatedProducts() {
 		return await axios
@@ -27,45 +27,45 @@ export default function ProudactDetiles() {
 			.then((product) => {
 				return product?.data?.data.filter(
 					(p) => p.category.slug === category && p.id != id
-				);
-			});
+				)
+			})
 	}
 
 	const { data: relatedProduct, isLoading } = useQuery({
-		queryKey: ["relatedProduct", id],
+		queryKey: ['relatedProduct', id],
 		queryFn: relatedProducts,
-	});
+	})
 
 	function getProudact() {
-		return axios.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`);
+		return axios.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`)
 	}
 	let {
 		data: dataDetails,
 		isLoading: isLodingDetails,
 		error,
 	} = useQuery({
-		queryKey: ["product", id],
+		queryKey: ['product', id],
 		queryFn: getProudact,
-	});
+	})
 
 	if (isLoading)
 		return (
 			<p className='text-center text-2xl mt-40'>Loading product details...</p>
-		);
+		)
 
 	if (isLodingDetails)
 		return (
 			<p className='text-center text-2xl mt-40'>Loading product details...</p>
-		);
+		)
 
 	if (error)
 		return (
 			<p className='text-center mt-10 text-red-500'>
 				Error fetching product: {error.message}
 			</p>
-		);
-	let ProductDetails = dataDetails?.data?.data;
-	console.log(ProductDetails);
+		)
+	let ProductDetails = dataDetails?.data?.data
+	console.log(ProductDetails)
 
 	function SimpleSlider() {
 		const settings = {
@@ -75,14 +75,14 @@ export default function ProudactDetiles() {
 			slidesToShow: 1,
 			slidesToScroll: 1,
 			arrows: false,
-		};
+		}
 		return (
 			<Slider {...settings}>
 				{ProductDetails.images?.map((src) => (
 					<img src={src} alt='' />
 				))}
 			</Slider>
-		);
+		)
 	}
 	return (
 		<>
@@ -154,7 +154,7 @@ export default function ProudactDetiles() {
 									alt=''`}
 								/>
 								<h3 className='text-main mt-1.5'>{items.category.name}</h3>
-								<p>{items.title.split(" ").slice(0, 2).join(" ")}</p>
+								<p>{items.title.split(' ').slice(0, 2).join(' ')}</p>
 								<div className='flex items-center justify-between'>
 									<p>EG: {items.price}</p>
 									<p>
@@ -185,5 +185,5 @@ export default function ProudactDetiles() {
 				</div>
 			</div>
 		</>
-	);
+	)
 }

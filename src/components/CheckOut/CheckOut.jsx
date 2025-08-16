@@ -1,31 +1,30 @@
 /** @format */
 import { useContext } from "react";
 import { useFormik } from "formik";
-import { CartContext } from "../../Context/CartContext";
+import { CartContext } from '../../Context/CartContext.jsx'
 export default function CheckOut() {
-	let { onlinePayment, cashPayment } = useContext(CartContext);
+	let { onlinePayment, cashPayment } = useContext(CartContext)
 
 	async function handlePayment(value) {
-		if (value.paymentMethod === "credit") {
-			await onlinePayment(value);
-		} else if (value.paymentMethod === "cash") {
-			await cashPayment(value);
+		if (value.paymentMethod === 'credit') {
+			await onlinePayment(value)
+		} else if (value.paymentMethod === 'cash') {
+			await cashPayment(value)
 		} else {
-			console.log("error");
+			console.log('error')
 		}
 	}
 	let Formik = useFormik({
 		initialValues: {
-			details: "",
-			Phone: "",
-			City: "",
-			paymentMethod: "",
+			details: '',
+			Phone: '',
+			City: '',
+			paymentMethod: '',
 		},
 		onSubmit: (values) => {
-			console.log(values);
-			handlePayment(values);
+			handlePayment(values)
 		},
-	});
+	})
 	return (
 		<>
 			<div className='h-[600px] flex justify-center items-center'>
@@ -44,7 +43,7 @@ export default function CheckOut() {
 
 						{Formik.errors.details && Formik.touched.details ? (
 							<div role='alert' className='mt-2 alert alert-error alert-soft'>
-								{Formik.errors.details}{" "}
+								{Formik.errors.details}{' '}
 							</div>
 						) : null}
 						<input
@@ -99,5 +98,5 @@ export default function CheckOut() {
 				</div>
 			</div>
 		</>
-	);
+	)
 }

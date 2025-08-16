@@ -1,12 +1,12 @@
 /** @format */
-import React, { useContext,useState } from "react";
+import { useContext, useState } from 'react'
 import "./Login.module.css";
 import { useFormik } from "formik";
 import Swal from "sweetalert2";
 import * as Yup from "yup";
 import axios from "axios";
 import Loader from "../Loader/Loader";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 import { tokenContext } from "../../Context/TokenContext";
 export default function Login() {
 	const [isLoading, setIsLoading] = useState(false);

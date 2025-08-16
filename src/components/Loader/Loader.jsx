@@ -1,8 +1,7 @@
 /** @format */
-import React from "react";
-import styled from "styled-components";
-import logo from "../../assets/freshcart-logo.svg";
-import "framer-motion";
+import styled from 'styled-components'
+import logo from '../../assets/freshcart-logo.svg'
+import 'framer-motion'
 
 export default function Spinner1() {
 	return (
@@ -19,7 +18,7 @@ export default function Spinner1() {
 				</div>
 			</div>
 		</StyledWrapper>
-	);
+	)
 }
 
 const StyledWrapper = styled.div`
@@ -111,4 +110,4 @@ const StyledWrapper = styled.div`
 			transform: rotateX(70deg) rotateZ(630deg);
 		}
 	}
-`;
+`

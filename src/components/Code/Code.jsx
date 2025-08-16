@@ -10,15 +10,13 @@ export default function Code() {
 	const navigate = useNavigate()
 async function handleCode() {
 	try {
-		const { data } = await axios.post(
+		await axios.post(
 			`https://ecommerce.routemisr.com/api/v1/auth/verifyResetCode`,
 			{ resetCode: code }
 		)
-		console.log(data)
-		toast.success("Success")
-		navigate("/NewPassword")
+		toast.success('Success')
+		navigate('/NewPassword')
 	} catch (error) {
-		console.error(error.response?.data || error.message)
 		toast.error(error.response?.data.message || error.message)
 	}
 }
