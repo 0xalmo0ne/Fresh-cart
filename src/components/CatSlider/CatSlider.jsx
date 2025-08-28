@@ -48,7 +48,7 @@ export default function CatSlider() {
 
 	return (
 		<>
-			<div className='container mx-auto mt-4 my-5 md:py-20 '>
+			<div className='container mx-auto mt-4 my-5 md:py-20 lg:py-20'>
 				<h1 className='text-2xl text-main mt-9'>Show Popular Category:</h1>
 				<Slider {...settings}>
 					{Categories?.map((cate) => (
