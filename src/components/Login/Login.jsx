@@ -25,49 +25,45 @@ export default function Login() {
 	});
 	let Formik = useFormik({
 		initialValues: {
-			email: "",
-			password: "",
+			email: '',
+			password: '',
 		},
 		validationSchema: mySchema,
 		onSubmit: (values) => {
-			console.log(values);
-			loginForm(values);
+			loginForm(values)
 		},
-	});
+	})
 
 	async function loginForm(values) {
 		setIsLoading(true);
 		try {
 			const { data } = await axios.post(
-				"https://ecommerce.routemisr.com/api/v1/auth/signin",
+				'https://ecommerce.routemisr.com/api/v1/auth/signin',
 				values
-			);
-			console.log("Registration success:", data.token);
-			console.log(data.message);
-			localStorage.setItem("userToken", data.token);
+			)
+			localStorage.setItem('userToken', data.token)
 			// Swal.fire("Success", "You Login successfully!", "success");
 			Swal.fire({
-				position: "center",
-				icon: "success",
-				title: "You Login successfully!",
+				position: 'center',
+				icon: 'success',
+				title: 'You Login successfully!',
 				showConfirmButton: false,
 				timer: 2000,
-			});
-			setToken(data.token);
-			navigat("/Home");
+			})
+			setToken(data.token)
+			navigat('/Home')
 		} catch (err) {
-			console.log("Registration error:", err.response?.data);
-			setIsLoading(false);
+			setIsLoading(false)
 			Swal.fire({
-				position: "center",
-				icon: "error",
+				position: 'center',
+				icon: 'error',
 				title:
 					err.response?.data?.errors?.msg ||
 					err.response?.data?.message ||
-					"Something went wrong",
+					'Something went wrong',
 				showConfirmButton: false,
 				timer: 3000,
-			});
+			})
 		}
 		setIsLoading(false);
 	}

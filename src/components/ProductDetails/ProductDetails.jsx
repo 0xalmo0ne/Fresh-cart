@@ -11,13 +11,11 @@ export default function ProudactDetiles() {
 	const { addToCart, addToList } = useContext(CartContext)
 
 	async function addToWish(productId) {
-		let respons = await addToList(productId)
-		console.log(respons, 'wishlist')
+		await addToList(productId)
 	}
 
 	async function addProudactCart(productId) {
-		let respons = await addToCart(productId)
-		console.log(respons)
+		await addToCart(productId)
 	}
 	let { id, category } = useParams()
 
@@ -65,8 +63,6 @@ export default function ProudactDetiles() {
 			</p>
 		)
 	let ProductDetails = dataDetails?.data?.data
-	console.log(ProductDetails)
-
 	function SimpleSlider() {
 		const settings = {
 			dots: true,

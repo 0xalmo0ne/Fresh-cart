@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from "react";
+import { useState } from 'react'
 import "./Code.module.css";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -22,6 +22,7 @@ async function handleCode() {
 }
 	return (
 		<>
+			<title>Please Enter Code</title>
 			<div>
 				<div className='mx-auto w-[50%] mt-50'>
 					<h1 className='text-main text-2xl'>Enter your code:</h1>

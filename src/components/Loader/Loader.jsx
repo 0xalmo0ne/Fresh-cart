@@ -13,7 +13,7 @@ export default function Spinner1() {
 					<div id='ring'></div>
 					<div id='ring'></div>
 					<div id='h3'>
-						<img src={logo} alt='loading logo' className='w-[500px]' />
+						<img src={logo} alt='loading logo' className='w-[400px]' />
 					</div>
 				</div>
 			</div>

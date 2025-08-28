@@ -11,35 +11,33 @@ export default function Brands() {
 		return await axios
 			.get(`https://ecommerce.routemisr.com/api/v1/brands?page=${page}`)
 			.then((data) => {
-				return data;
+				return data
 			})
 			.catch((error) => {
-				console.error(error);
-				return error;
-			});
+				return error
+			})
 	}
 	let { data } = useQuery({
-		queryKey: ["brands", page],
+		queryKey: ['brands', page],
 		queryFn: getBrands,
 		keepPreviousData: true,
-	});
-	let brands = Array.isArray(data?.data?.data) ? data.data.data : [];
+	})
+	let brands = Array.isArray(data?.data?.data) ? data.data.data : []
 
 	async function fetchBrand(productId) {
 		return await axios
 			.get(`https://ecommerce.routemisr.com/api/v1/brands/${productId}`)
 			.then((response) => {
-				console.log(response, "براند معين");
-				return response.data;
+				return response.data
 			})
 			.catch((error) => {
-				console.error(error);
-				return error;
-			});
+				return error
+			})
 	}
-	let totalPages = data?.data?.metadata?.numberOfPages || 0;
+	let totalPages = data?.data?.metadata?.numberOfPages || 0
 	return (
 		<>
+			<title>Brands</title>
 			<div className='container mx-auto mt-20 px-2 mb-20'>
 				<div className='flex flex-wrap justify-center'>
 					{brands.map((brand) => (
@@ -48,14 +46,16 @@ export default function Brands() {
 							className='bg-white rounded-xl shadow-md hover:shadow-2xl transition duration-300 m-4 p-6 w-64'>
 							<div className='bg-white rounded-xl shadow-md hover:shadow-2xl transition duration-300 m-4 p-6 w-64'>
 								<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-									<h2 className='text-2xl mb-2 text-lime-500'>{brand.name}</h2>
+									<h2 className='text-2xl mb-2 text-lime-500 cursor-pointer'>
+										{brand.name}
+									</h2>
 								</motion.div>
 							</div>
 							<div>
 								<img
 									src={brand.image}
 									alt={brand.name}
-									className='w-full h-40 object-cover rounded-t-xl mb-4'
+									className='w-full h-40 object-cover rounded-t-xl mb-4 cursor-pointer'
 									onClick={() => fetchBrand(brand._id)}
 								/>
 							</div>
@@ -74,5 +74,5 @@ export default function Brands() {
 				))}
 			</div>
 		</>
-	);
+	)
 }

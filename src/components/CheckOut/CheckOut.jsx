@@ -11,7 +11,7 @@ export default function CheckOut() {
 		} else if (value.paymentMethod === 'cash') {
 			await cashPayment(value)
 		} else {
-			console.log('error')
+			console.log('Invalid')
 		}
 	}
 	let Formik = useFormik({

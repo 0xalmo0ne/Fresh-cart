@@ -5,6 +5,7 @@ export default function Products() {
 	return (
 		<div>
 			<>
+				<title>Products</title>
 				<FeatureProducts />
 			</>
 		</div>

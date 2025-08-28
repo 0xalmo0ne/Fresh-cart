@@ -1,5 +1,4 @@
 /** @format */
-
 import { useContext, useEffect } from 'react'
 import sty from './Navbar.module.css'
 import Logo from './../../assets/freshcart-logo.svg'

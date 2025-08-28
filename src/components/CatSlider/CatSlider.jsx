@@ -48,13 +48,17 @@ export default function CatSlider() {
 
 	return (
 		<>
-			<div className='container mx-auto my-10 lg:px-20 '>
+			<div className='container mx-auto mt-4 my-5 md:py-20 '>
 				<h1 className='text-2xl text-main mt-9'>Show Popular Category:</h1>
 				<Slider {...settings}>
 					{Categories?.map((cate) => (
 						<>
-							<img src={cate.image} className='h-[220px] w-[220px]' alt='' />
-							<p className='text-center text-xl hidden sm:block'>{cate.name}</p>
+							<div key={cate._id}>
+								<img src={cate.image} className='h-[220px] w-[220px]' alt='' />
+								<p className='text-center text-xl hidden sm:block'>
+									{cate.name}
+								</p>
+							</div>
 						</>
 					))}
 				</Slider>

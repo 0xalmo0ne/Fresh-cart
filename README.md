@@ -35,32 +35,6 @@ and proceed with a smooth checkout experience.
     │── package.json
     │── README.md
 
-## ⚡ Getting Started
-
-### 1️⃣ Clone the Repository
-
-``` bash
-git clone https://github.com/your-username/freshcart.git
-cd freshcart
-```
-
-### 2️⃣ Install Dependencies
-
-``` bash
-npm install
-```
-
-### 3️⃣ Start the Development Server
-
-``` bash
-npm run dev
-```
-
-Your app will be running on `http://localhost:5173/` 🎉
-
-
-etc.)*
-
 ## 📌 License
 
 This project is licensed under the MIT License.

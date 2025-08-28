@@ -67,9 +67,9 @@ export default function FeatureProducts() {
 								to={`/ProductDetails/${products.id}/${products.category.slug}`}>
 								<img
 									src={products.imageCover}
+									alt='Frech Cart Image'
 									className={`
-										${styles.img} w-full p-2.5 h-[280px] object-cover'
-									alt=''`}
+										${styles.img} w-full p-2.5 h-[280px] object-cover rounded-2xl`}
 								/>
 								<h3 className='text-main mt-1.5'>{products.category.name}</h3>
 								<p>{products.title.split(' ').slice(0, 2).join(' ')}</p>

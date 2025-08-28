@@ -8,7 +8,7 @@ export default function CartContextprovider({ children }) {
 	const [onNumberItem, setOnNumberItem] = useState(0)
 	const [totalprice, setTotalPrice] = useState()
 	const [cart, setCart] = useState(null)
-	const [list, setList] = useState(null)
+	const [setList] = useState(null)
 	let headers = {
 		token: localStorage.getItem('userToken'),
 	}
@@ -43,14 +43,13 @@ export default function CartContextprovider({ children }) {
 				headers,
 			})
 			.then((data) => {
-				console.log(data, 'getCart')
+				// console.log(data, 'getCart')
 				setCart(data.data.data._id)
 				setOnNumberItem(data.data.numOfCartItems)
 				setTotalPrice(data.data.data.totalCartPrice)
 				return data
 			})
 			.catch((error) => {
-				console.log(error)
 				return error
 			})
 	}
@@ -67,7 +66,6 @@ export default function CartContextprovider({ children }) {
 				return data
 			})
 			.catch((error) => {
-				console.log(error)
 				return error
 			})
 	}
@@ -212,7 +210,6 @@ export default function CartContextprovider({ children }) {
 				headers,
 			})
 			.then((data) => {
-				console.log(data, 'removeList')
 				toast.success('product removed from Wishlist')
 				setOnNumberItem(data.data.numOfCartItems)
 				setList(data.data.data._id)
@@ -220,7 +217,6 @@ export default function CartContextprovider({ children }) {
 				return data
 			})
 			.catch((error) => {
-				console.log(error)
 				return error
 			})
 	}
@@ -251,7 +247,6 @@ export default function CartContextprovider({ children }) {
 		return await axios
 			.get(`https://ecommerce.routemisr.com/api/v1/categories`)
 			.then((data) => {
-				console.log(data, 'getCategories')
 				return data
 			})
 			.catch((error) => {
@@ -300,10 +295,12 @@ export default function CartContextprovider({ children }) {
 				email: email,
 				newPassword: newPassword,
 			}
-			const { data } = await axios.put(
+			let { data } = await axios.put(
 				'https://ecommerce.routemisr.com/api/v1/auth/resetPassword',
 				body,
-				{ headers }
+				{
+					headers,
+				}
 			)
 			console.log(data)
 			toast.success('Password updated successfully')
