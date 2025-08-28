@@ -55,9 +55,7 @@ export default function CatSlider() {
 						<>
 							<div key={cate._id} className='cursor-pointer p-2 sm:p-2'>
 								<img src={cate.image} className='h-[220px] w-[220px]' alt='' />
-								<p className='text-center text-xl hidden sm:text-sm'>
-									{cate.name}
-								</p>
+								<p className='text-center text-xl sm:text-sm'>{cate.name}</p>
 							</div>
 						</>
 					))}
