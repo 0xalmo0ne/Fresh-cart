@@ -35,6 +35,31 @@ and proceed with a smooth checkout experience.
     │── package.json
     │── README.md
 
+<<<<<<< HEAD
 ## 📌 License
 
 This project is licensed under the MIT License.
+=======
+## ⚡ Getting Started
+
+### 1️⃣ Clone the Repository
+
+``` bash
+git clone https://github.com/your-username/freshcart.git
+cd freshcart
+```
+
+### 2️⃣ Install Dependencies
+
+``` bash
+npm install
+```
+
+### 3️⃣ Start the Development Server
+
+``` bash
+npm run dev
+```
+
+                                                 يتم العمل عليه حتى يتم الوصول لافضل شكل ممكن
+>>>>>>> 9abfd1fc25ef7dac59e358e10e04b8e36db4415c
