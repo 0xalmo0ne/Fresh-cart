@@ -17,7 +17,7 @@ export default function CatSlider() {
 	const settings = {
 		dots: false,
 		infinite: true,
-		speed: 1510,
+		speed: 1500,
 		cssEase: 'linear',
 		slidesToShow: 7,
 		slidesToScroll: 1,
@@ -48,12 +48,12 @@ export default function CatSlider() {
 
 	return (
 		<>
-			<div className='container mx-auto mt-4 my-5 md:py-20 lg:py-20'>
-				<h1 className='text-2xl text-main mt-9'>Show Popular Category:</h1>
-				<Slider {...settings}>
+			<div className='container mx-auto mt-2 my-5 md:py-20 lg:py-20'>
+				<h1 className='text-2xl text-main mt-2 p-8'>Show Popular Category:</h1>
+				<Slider {...settings} className='px-20'>
 					{Categories?.map((cate) => (
 						<>
-							<div key={cate._id}>
+							<div key={cate._id} className='cursor-pointer p-2 sm:p-2'>
 								<img src={cate.image} className='h-[220px] w-[220px]' alt='' />
 								<p className='text-center text-xl hidden sm:block'>
 									{cate.name}
