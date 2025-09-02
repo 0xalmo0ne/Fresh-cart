@@ -1,28 +1,29 @@
 /** @format */
-import { useContext, useState } from 'react'
-import "./Login.module.css";
-import { useFormik } from "formik";
-import Swal from "sweetalert2";
-import * as Yup from "yup";
-import axios from "axios";
-import Loader from "../Loader/Loader";
+import { useContext, useEffect, useRef, useState } from 'react'
+import './Login.module.css'
+import { useFormik } from 'formik'
+import Swal from 'sweetalert2'
+import * as Yup from 'yup'
+import axios from 'axios'
+import Loader from '../Loader/Loader'
 import { useNavigate } from 'react-router-dom'
-import { tokenContext } from "../../Context/TokenContext";
+import { tokenContext } from '../../Context/TokenContext'
 export default function Login() {
-	const [isLoading, setIsLoading] = useState(false);
-	const { setToken } = useContext(tokenContext);
-	let navigat = useNavigate();
+	let myInput = useRef()
+	const [isLoading, setIsLoading] = useState(false)
+	const { setToken } = useContext(tokenContext)
+	let navigat = useNavigate()
 	const mySchema = Yup.object({
 		email: Yup.string()
-			.required("Email is required")
-			.email("Invalid email format"),
+			.required('Email is required')
+			.email('Invalid email format'),
 		password: Yup.string()
-			.required("Password is required")
+			.required('Password is required')
 			.matches(
 				/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/,
-				"Password must be at least 8 characters and include uppercase, lowercase, number, and special character"
+				'Password must be at least 8 characters and include uppercase, lowercase, number, and special character'
 			),
-	});
+	})
 	let Formik = useFormik({
 		initialValues: {
 			email: '',
@@ -35,7 +36,7 @@ export default function Login() {
 	})
 
 	async function loginForm(values) {
-		setIsLoading(true);
+		setIsLoading(true)
 		try {
 			const { data } = await axios.post(
 				'https://ecommerce.routemisr.com/api/v1/auth/signin',
@@ -65,16 +66,20 @@ export default function Login() {
 				timer: 3000,
 			})
 		}
-		setIsLoading(false);
+		setIsLoading(false)
 	}
+	useEffect(() => {
+		myInput.current.focus()
+	}, [])
 
-	if (isLoading) return <Loader />;
+	if (isLoading) return <Loader />
 	return (
 		<>
 			<div className='w-[80%] mx-auto my-4'>
 				<h1 className='text-3xl font-bold mt-2 my-4'>Login Now:</h1>
 				<form onSubmit={Formik.handleSubmit}>
 					<input
+						ref={myInput}
 						type='email'
 						placeholder='Email:'
 						className='input w-full focus:outline-0 rounded-xl mt-3'

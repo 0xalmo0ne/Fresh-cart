@@ -5,44 +5,46 @@ import Swal from "sweetalert2";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useRef } from 'react'
 export default function Register() {
-	let navigat = useNavigate();
+	let myInput = useRef()
+	let navigat = useNavigate()
 	const mySchema = Yup.object({
 		name: Yup.string()
-			.required("Name is required")
-			.min(3, "Name must be at least 3 characters")
-			.max(30, "Name must not exceed 30 characters"),
+			.required('Name is required')
+			.min(3, 'Name must be at least 3 characters')
+			.max(30, 'Name must not exceed 30 characters'),
 		email: Yup.string()
-			.required("Email is required")
-			.email("Invalid email format"),
+			.required('Email is required')
+			.email('Invalid email format'),
 		password: Yup.string()
-			.required("Password is required")
+			.required('Password is required')
 			.matches(
 				/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/,
-				"Password must be at least 8 characters and include uppercase, lowercase, number, and special character"
+				'Password must be at least 8 characters and include uppercase, lowercase, number, and special character'
 			),
 		rePassword: Yup.string()
-			.required("Re-password is required")
-			.oneOf([Yup.ref("password")], "Passwords must match"),
+			.required('Re-password is required')
+			.oneOf([Yup.ref('password')], 'Passwords must match'),
 		phone: Yup.string()
-			.required("Phone is required")
-			.matches(/^(002)?01[0125][0-9]{8}$/, "Invalid phone number"),
-	});
+			.required('Phone is required')
+			.matches(/^(002)?01[0125][0-9]{8}$/, 'Invalid phone number'),
+	})
 
 	let Formik = useFormik({
 		initialValues: {
-			name: "",
-			email: "",
-			password: "",
-			rePassword: "",
-			phone: "",
+			name: '',
+			email: '',
+			password: '',
+			rePassword: '',
+			phone: '',
 		},
 		validationSchema: mySchema,
 		onSubmit: (values) => {
-			console.log(values);
-			regForm(values);
+			console.log(values)
+			regForm(values)
 		},
-	});
+	})
 	// 	if (!values.name) {
 	// 		errors.name = "Required";
 	// 	} else if (values.name.length < 3) {
@@ -92,23 +94,23 @@ export default function Register() {
 	async function regForm(values) {
 		try {
 			const { data } = await axios.post(
-				"https://ecommerce.routemisr.com/api/v1/auth/signup",
+				'https://ecommerce.routemisr.com/api/v1/auth/signup',
 				values
-			);
-			console.log("Registration success:", data);
-			setTimeout({});
-			Swal.fire("Success", "You have registered successfully!", "success");
-			navigat("/login");
+			)
+			console.log('Registration success:', data)
+			setTimeout({})
+			Swal.fire('Success', 'You have registered successfully!', 'success')
+			navigat('/login')
 		} catch (err) {
-			console.log("Registration error:", err.response?.data);
+			console.log('Registration error:', err.response?.data)
 			Swal.fire({
-				icon: "error",
-				title: "Registration Failed",
+				icon: 'error',
+				title: 'Registration Failed',
 				text:
 					err.response?.data?.errors?.msg ||
 					err.response?.data?.message ||
-					"Something went wrong",
-			});
+					'Something went wrong',
+			})
 		}
 	}
 
@@ -128,13 +130,17 @@ export default function Register() {
 	// 		});
 	// }
 
-	
+	useEffect(() => {
+		myInput.current.focus()
+	}, [])
+
 	return (
 		<>
 			<div className='w-[90%] mx-auto my-4'>
 				<h1 className='text-3xl font-bold mt-2 my-4'>Register Now:</h1>
 				<form onSubmit={Formik.handleSubmit}>
 					<input
+						ref={myInput}
 						type='text'
 						placeholder='Name:'
 						className='input w-full focus:outline-0 rounded-xl mt-3'
@@ -145,7 +151,7 @@ export default function Register() {
 					/>
 					{Formik.errors.name && Formik.touched.name ? (
 						<div role='alert' className='mt-2 alert alert-error alert-soft'>
-							{Formik.errors.name}{" "}
+							{Formik.errors.name}{' '}
 						</div>
 					) : null}
 					<input
@@ -159,7 +165,7 @@ export default function Register() {
 					/>
 					{Formik.errors.email && Formik.touched.email ? (
 						<div role='alert' className='mt-2 alert alert-error alert-soft'>
-							{Formik.errors.email}{" "}
+							{Formik.errors.email}{' '}
 						</div>
 					) : null}
 					<input
@@ -214,5 +220,5 @@ export default function Register() {
 				</form>
 			</div>
 		</>
-	);
+	)
 }

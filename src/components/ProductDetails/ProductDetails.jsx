@@ -1,19 +1,17 @@
 /** @format */
 
-import React, { useContext } from "react";
-import styles from "./ProudactDetiles.module.css/";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { Link, useParams } from "react-router-dom";
-import Slider from "react-slick";
+import { useContext } from 'react'
+import styles from './ProudactDetiles.module.css/'
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
+import { Link, useParams } from 'react-router-dom'
+import Slider from 'react-slick'
 import { CartContext } from '../../Context/CartContext.jsx'
 export default function ProudactDetiles() {
 	const { addToCart, addToList } = useContext(CartContext)
-
 	async function addToWish(productId) {
 		await addToList(productId)
 	}
-
 	async function addProudactCart(productId) {
 		await addToCart(productId)
 	}
